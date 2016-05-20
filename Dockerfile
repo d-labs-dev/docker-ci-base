@@ -2,7 +2,7 @@ FROM gitlab/dind:latest
 
 MAINTAINER Leo Schweizer <leonhard.schweizer@gmail.com>
 
-ENV RANCHER_COMPOSE_VERSION 0.8.1
+ENV RANCHER_COMPOSE_VERSION 0.7.4
 
 RUN \
   mkdir -p /srv/rancher && \
