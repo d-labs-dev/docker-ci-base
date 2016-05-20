@@ -11,3 +11,8 @@ RUN \
   rm -f /tmp/rancher-compose-linux-amd64-v$RANCHER_COMPOSE_VERSION.tar.gz && \
   mv /tmp/rancher-compose-v$RANCHER_COMPOSE_VERSION/rancher-compose /srv/rancher/rancher-compose && \
   ln -s /srv/rancher/rancher-compose /usr/bin/rancher-compose
+
+RUN \
+  apt-get update && \
+  apt-get install -y python2.7 python-pip && \
+  pip install awscli
