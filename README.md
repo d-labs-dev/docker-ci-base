@@ -1,1 +1,1 @@
-# docker-gitlab-dind-rancher
+# docker-ci-base
