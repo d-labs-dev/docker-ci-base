@@ -4,7 +4,7 @@ MAINTAINER Leo Schweizer <leonhard.schweizer@gmail.com>
 
 ADD aws-ecr-cleanup /usr/bin/aws-ecr-cleanup
 
-ENV RANCHER_COMPOSE_VERSION 0.8.1
+ENV RANCHER_COMPOSE_VERSION 0.8.5
 
 RUN \
   mkdir -p /srv/rancher && \
