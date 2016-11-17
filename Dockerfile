@@ -21,6 +21,7 @@ RUN \
   gunzip /tmp/rancher-cli-linux-amd64-v$RANCHER_CLI_VERSION.gz && \
   rm -f /tmp/rancher-cli-linux-amd64-v$RANCHER_CLI_VERSION.gz && \
   mv /tmp/rancher-cli-linux-amd64-v$RANCHER_CLI_VERSION /srv/rancher/rancher && \
+  chmod +x /srv/rancher/rancher && \
   ln -s /srv/rancher/rancher /usr/bin/rancher
 
 RUN \
