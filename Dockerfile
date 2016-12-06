@@ -1,4 +1,4 @@
-FROM gitlab/dind:latest
+FROM docker:1.12
 
 MAINTAINER Leo Schweizer <leonhard.schweizer@gmail.com>
 
