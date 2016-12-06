@@ -1,4 +1,4 @@
-FROM docker:1.12
+FROM docker:1.12-dind
 
 MAINTAINER Leo Schweizer <leonhard.schweizer@gmail.com>
 
