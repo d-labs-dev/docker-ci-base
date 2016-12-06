@@ -24,7 +24,7 @@ RUN \
   chmod +x /srv/rancher/rancher && \
   ln -s /srv/rancher/rancher /usr/bin/rancher
 
-RUN \
-  apt-get update && \
-  apt-get install -y python2.7 python-pip && \
-  pip install awscli
+RUN apk add --update \
+    python \
+    py-pip \
+  && pip install awscli \
