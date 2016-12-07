@@ -1,3 +1,3 @@
-#!/bin/bash
+#!/bin/sh
 
 aws ecr list-images --region $1 --repository-name $2 --query 'imageIds[?type(imageTag)!=`string`].[imageDigest]' --output text | while read line; do aws ecr batch-delete-image --region $1 --repository-name $2 --image-ids imageDigest=$line; done
