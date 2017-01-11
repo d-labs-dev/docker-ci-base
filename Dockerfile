@@ -4,8 +4,8 @@ MAINTAINER Leo Schweizer <leonhard.schweizer@gmail.com>
 
 ADD aws-ecr-cleanup /usr/bin/aws-ecr-cleanup
 
-ENV RANCHER_COMPOSE_VERSION 0.12.0
-ENV RANCHER_CLI_VERSION 0.4.0
+ENV RANCHER_COMPOSE_VERSION 0.12.1
+ENV RANCHER_CLI_VERSION 0.4.1
 
 RUN \
   mkdir -p /srv/rancher && \
@@ -25,6 +25,7 @@ RUN \
   ln -s /srv/rancher/rancher /usr/bin/rancher
 
 RUN apk add --update \
+    git \
     python \
     py-pip \
   && pip install awscli \
