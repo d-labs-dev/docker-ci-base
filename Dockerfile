@@ -2,10 +2,9 @@ FROM docker:1.12
 
 MAINTAINER Leo Schweizer <leonhard.schweizer@gmail.com>
 
-ADD aws-ecr-cleanup /usr/bin/aws-ecr-cleanup
-
 ENV RANCHER_COMPOSE_VERSION 0.12.1
 ENV RANCHER_CLI_VERSION 0.4.1
+ENV GIT_LFS_VERSION 1.5.5
 
 RUN \
   mkdir -p /srv/rancher && \
@@ -25,7 +24,16 @@ RUN \
   ln -s /srv/rancher/rancher /usr/bin/rancher
 
 RUN apk add --update \
-    git git-lfs \
+    git \
     python \
     py-pip \
-  && pip install awscli \
+  && pip install awscli
+
+RUN wget -q -O /tmp/git-lfs-linux-amd64-v${GIT_LFS_VERSION}.tar.gz https://github.com/github/git-lfs/releases/download/v${GIT_LFS_VERSION}/git-lfs-linux-amd64-${GIT_LFS_VERSION}.tar.gz && \
+    tar -xzf /tmp/git-lfs-linux-amd64-v${GIT_LFS_VERSION}.tar.gz -C /tmp && \
+    mv /tmp/git-lfs-${GIT_LFS_VERSION}/git-lfs /usr/bin/ && \
+    git-lfs install && \
+    rm -rf /tmp/git-lfs-${GIT_LFS_VERSION}/git-lfs && \
+    rm -rf /tmp/git-lfs-linux-amd64-v${GIT_LFS_VERSION}.tar.gz
+
+ADD aws-ecr-cleanup /usr/bin/aws-ecr-cleanup
