@@ -25,7 +25,7 @@ RUN \
   ln -s /srv/rancher/rancher /usr/bin/rancher
 
 RUN apk add --update \
-    git \
+    git git-lfs \
     python \
     py-pip \
   && pip install awscli \
