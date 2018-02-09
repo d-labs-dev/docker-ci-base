@@ -1,10 +1,10 @@
-FROM docker:1.12
+FROM docker:18.02
 
 MAINTAINER Leo Schweizer <leonhard.schweizer@gmail.com>
 
 ENV RANCHER_COMPOSE_VERSION 0.12.5
-ENV RANCHER_CLI_VERSION 0.6.4
-ENV GIT_LFS_VERSION 1.5.5
+ENV RANCHER_CLI_VERSION 0.6.7
+ENV GIT_LFS_VERSION 2.3.4
 
 RUN \
   mkdir -p /srv/rancher && \
