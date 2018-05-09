@@ -5,6 +5,7 @@ MAINTAINER Leo Schweizer <leonhard.schweizer@gmail.com>
 ENV RANCHER_COMPOSE_VERSION 0.12.5
 ENV RANCHER_CLI_VERSION 0.6.7
 ENV GIT_LFS_VERSION 2.3.4
+ENV CF_CLI_VERSION 6.36.1
 
 RUN \
   mkdir -p /srv/rancher && \
@@ -23,11 +24,13 @@ RUN \
   chmod +x /srv/rancher/rancher && \
   ln -s /srv/rancher/rancher /usr/bin/rancher
 
-RUN apk add --update \
+RUN apk add --update --no-cache \
     git \
     python \
     py-pip \
-  && pip install awscli
+  && pip install awscli \
+  && wget -q -O - 'https://cli.run.pivotal.io/stable?release=linux64-binary&version='${CF_CLI_VERSION} \
+    | tar -xzf - -C /usr/local/bin
 
 RUN wget -q -O /tmp/git-lfs-linux-amd64-v${GIT_LFS_VERSION}.tar.gz https://github.com/github/git-lfs/releases/download/v${GIT_LFS_VERSION}/git-lfs-linux-amd64-${GIT_LFS_VERSION}.tar.gz && \
     tar -xzf /tmp/git-lfs-linux-amd64-v${GIT_LFS_VERSION}.tar.gz -C /tmp && \
